@@ -17,8 +17,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //初始化主窗口并将主窗口设置为屏幕大小
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //将该窗口设置为keywindow
+    [self.window makeKeyAndVisible];
+    //获得main。story实例
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    //在main.story中找到名为tab的页面
+    YiyuanViewController *tabVC = [storyboard instantiateViewControllerWithIdentifier:@"Yiyuan"];
+    //将上述页面设置为app入口
+    self.window.rootViewController = tabVC;
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
